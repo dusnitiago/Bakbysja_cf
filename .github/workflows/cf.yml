@@ -19,12 +19,12 @@ jobs:
 
       - name: Connect WARP
         run: |
-          warp-cli --accept-tos register
+          warp-cli --accept-tos registration new
           warp-cli --accept-tos connect
           sleep 5
           curl https://cloudflare.com/cdn-cgi/trace | grep ip
 
-      - name: Record CF
+      - name: Record IPTV
         run: |
           ffmpeg \
             -user_agent "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/91.0 Mobile Safari/537.36" \
