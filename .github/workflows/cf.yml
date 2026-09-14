@@ -1,0 +1,28 @@
+name: Record IPTV
+
+on:
+  workflow_dispatch:
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install ffmpeg
+        run: sudo apt-get install -y ffmpeg
+
+      - name: Record IPTV
+        run: |
+          ffmpeg \
+            -user_agent "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/91.0 Mobile Safari/537.36" \
+            -headers "Referer: http://cf.trial-onetvup.site/\r\n" \
+            -i "http://cf.trial-onetvup.site//live/36857dafe9b4/1877226576/1819018.ts" \
+            -c copy \
+            -t 300 \
+            output.ts
+
+      - name: Upload recording
+        uses: actions/upload-artifact@v4
+        with:
+          name: recording
+          path: output.ts
