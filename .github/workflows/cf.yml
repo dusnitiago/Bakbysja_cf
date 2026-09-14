@@ -1,4 +1,4 @@
-name: Record IPTV
+name: Record cf
 
 on:
   workflow_dispatch:
