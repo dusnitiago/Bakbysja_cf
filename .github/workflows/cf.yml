@@ -1,8 +1,12 @@
-name: Record CF
+name: Record Stream
+run-name: ${{ github.event.inputs.run_name || 'Record Stream' }}
 
 on:
   workflow_dispatch:
     inputs:
+      run_name:
+        description: 'Name for this run e.g. BeIN Sports 1'
+        required: false
       channel_url:
         description: 'Channel URL (leave empty to use stream_id secret)'
         required: false
