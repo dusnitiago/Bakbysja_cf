@@ -74,6 +74,10 @@ jobs:
             echo "STREAM_URL=$BASE_URL" >> $GITHUB_ENV
           fi
 
+          if [ -n "${{ github.event.inputs.folder_id }}" ]; then
+            echo "FOLDER_ID=${{ github.event.inputs.folder_id }}" >> $GITHUB_ENV
+          fi
+
       - name: Record and upload live
         env:
           GOFILE_TOKEN: ${{ secrets.GOFILE_TOKEN }}
